@@ -8,9 +8,9 @@ export default function Login(){
 	
 	const navigate = useNavigate();
 
-	const [task, setTask] = useState({id: "", title: "", description: "", duration: "", deadline: "", assignee: "", assignor: "", status: ""})
+	const [task, setTask] = useState({email: "", password: ""})
 	// console.log(task)
-	const {id, title, description, duration, deadline, assignee, assignor, status} = task;
+	const {email, password} = task;
 	
 	
 
@@ -20,9 +20,6 @@ export default function Login(){
 
 	const handleSubmit = (e) =>{
 		e.preventDefault();
-		arr.push(task);
-		// console.log(arr);
-		setState(arr)
 		navigate("/");
 	};
 
@@ -33,8 +30,8 @@ export default function Login(){
 		<div style={{ margin:"20px"}}>
 			
 			<form onSubmit={handleSubmit}>
-				<input placeholder="email" value={id} name="email" onChange={change}/>        
-				<input type="password"placeholder="password" value={title} name="password" onChange={change}/>        
+				<input placeholder="email" value={email} name="email" onChange={change}/>        
+				<input type="password"placeholder="password" value={password} name="password" onChange={change}/>        
 			       
 				<input type="submit"/>        
 				<input type="reset"/>        
