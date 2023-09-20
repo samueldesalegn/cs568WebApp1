@@ -9,7 +9,7 @@ export default function Home(){
 
 	return (
 		<div>
-			<button onClick={navigateToAddNewTask}>Goto AddNewTask</button>
+			<button onClick={navigateToAddNewTask} style={{color: "blue", margin:"10px 10px 10px 800px", border:"4px solid black"}}>Goto AddNewTask</button>
 			<TaskList />
 		</div>
 	);

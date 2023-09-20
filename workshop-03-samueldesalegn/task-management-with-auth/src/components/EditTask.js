@@ -1,39 +1,35 @@
-import { useState } from "react";
+import { useState, useContext} from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import tasks from "./tasks"
+import GlobalContext from "../services/Context";
 
 
 export default function EditTask(){
 	
-	// const [task, setTask] = useState(etask);
-	// // console.log(task)
+	const {state, setState} = useContext(GlobalContext);
+	
 	const location = useLocation();
-	console.log(location.state);
-	const [state, setState] = useState(location.state);
+
+	
+	const [editTask, setEditState] = useState(location.state);
+	
 	const navigate = useNavigate();
-	const {title, description, duration, deadline, assignee, assignor, status} = state;
+	const {title, description, duration, deadline, assignee, assignor, status} = editTask;
 	
-	
+	const newState = {...state};
 
 	const change = (e) => {
-		setState({...state, [e.target.name]: e.target.value})
+		setEditState({...editTask, [e.target.name]: e.target.value})
 	};
 
 	const handleSubmit = (e) =>{
 		e.preventDefault();
-		for (let i = 0; i < tasks.length; i++) {
-			if (tasks[i].id === state.id) {
-				tasks[i] = state;
-				break;
-			}
-			
+		const index = newState.tasks.findIndex(elem =>editTask.id ===elem.id);
+		if (index !== -1) {
+			newState.tasks[index] = editTask;
+			setState(newState);
+			navigate("/");
 		}
-		navigate("/");
-		
-
 	};
-
-	
 
 	return (
 

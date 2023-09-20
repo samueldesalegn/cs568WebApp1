@@ -1,4 +1,4 @@
-let user = { email: "your-email@miu.edu", password: "123456" }
+let user = { email: "test@miu.edu", password: "123" }
 export default function login(email, password) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -7,7 +7,7 @@ export default function login(email, password) {
       } else {
         reject("Wrong email or password")
       }
-    }, 1000)
+    }, 100)
   })
 }
 

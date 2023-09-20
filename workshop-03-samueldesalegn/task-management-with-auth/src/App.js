@@ -1,22 +1,27 @@
 import './App.css';
 import TaskList from './components/TaskList';
-import GlobalContext from "./components/Context";
+import GlobalContext from "./services/Context";
 import Home from "./components/Home";
 import EditTask from './components/EditTask';
 import { useState, useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 import router from './router';
-
-import { getTasks } from "./components/network";
+import Login from "./components/login"
+import { getTasks } from "./services/network";
 
 
 function App() {
 
-  const [state, setState] = useState([]);
+  const [state, setState] = useState({tasks:[], user: null});
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getTasks();
-      setState(data)
+      try {
+        const data = await getTasks();
+        setState({...state, tasks: data})
+        
+      } catch (error) {
+        alert(error);
+      }
 
     };
     fetchData();
@@ -26,11 +31,9 @@ function App() {
   return (
     <div>
       <GlobalContext.Provider value={{ state, setState }}>
-        <RouterProvider router={router} />
+        {state.user? <RouterProvider router={router} />: <Login />}
       </GlobalContext.Provider>
-      {/* <RouterProvider router={router} /> */}
-
-    </div>
+      </div>
   );
 }
 

@@ -1,7 +1,7 @@
 import TaskDetails from "./TaskDetails";
 // import {getTasks} from "./network";
 import { useContext } from "react";
-import GlobalContext from "./Context";
+import GlobalContext from "../services/Context";
 
 
 
@@ -9,17 +9,13 @@ import GlobalContext from "./Context";
 
 
 export default function TaskList() {
-	
-	const {state, setState} = useContext(GlobalContext);
-	
-	
-	return(
+	const { state } = useContext(GlobalContext);
+
+	return (
 		<div>
 			{
-				state.map(task => <TaskDetails key={task.id} task={task}/>)
-				
+				state.tasks.map(task => <TaskDetails key={task.id} task={task} />)
 			}
-			
 		</div>
 	)
 }
