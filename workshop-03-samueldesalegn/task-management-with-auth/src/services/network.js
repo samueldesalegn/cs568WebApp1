@@ -43,3 +43,38 @@ export function getTasks() {
 }
 
 // export default tasks;
+
+
+// import axios from "axios";
+// axios.defaults.baseURL = "http://localhost:5001";
+
+// export async function login(user) {
+//   const url = "/login";
+//   try {
+//     const res = await axios.post(url, user);
+//     return res.data;
+//   } catch (error) {
+//     return null;
+//   }
+// }
+
+// export async function postTasks(user) {
+//   const url = "/AddNewTask";
+//   try {
+//     const res = await axios.post(url, user);
+//     return res.data;
+//   } catch (error) {
+//     return null;
+//   }
+// }
+
+// export async function getTasks(user) {
+//   const url = "/tasks";
+//   axios.defaults.headers.common["Authorization"] = `Bearer ${user}`
+//   try {
+//     const res = await axios.get(url);
+//     return res.data;
+//   } catch (error) {
+//     return null;
+//   }
+// }

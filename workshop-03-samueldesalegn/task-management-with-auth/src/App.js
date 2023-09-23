@@ -1,8 +1,5 @@
 import './App.css';
-import TaskList from './components/TaskList';
 import GlobalContext from "./services/Context";
-import Home from "./components/Home";
-import EditTask from './components/EditTask';
 import { useState, useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 import router from './router';
